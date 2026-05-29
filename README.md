@@ -155,7 +155,7 @@ python examples/main.py \
     --operation_loss block \  # variant of operation loss (diag | block | full)
     --operation_loss_regularize 0.25 \  # weighting factor between encoding and operation loss
     --noise depolarizing --noise_strength 0.1 --noise_asymmetry 0.5 \  # define noise structure
-    --operation_transversal T --operation_weakly_transversla CX \  # operations to train
+    --operation_transversal T --operation_weakly_transversal CX \  # operations to train
     --num_test_states 100 \  # number of states to test encoding on
     --path PATH  # path to store results to
 ```
