@@ -1,0 +1,33 @@
+//d
+//a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13
+OPENQASM 3;
+qubit d;
+qubit a0;
+qubit a1;
+qubit a2;
+qubit a3;
+qubit a4;
+qubit a5;
+qubit a6;
+qubit a7;
+qubit a8;
+qubit a9;
+qubit a10;
+qubit a11;
+qubit a12;
+qubit a13;
+tdg d;
+tdg a0;
+tdg a1;
+tdg a2;
+tdg a3;
+tdg a4;
+tdg a5;
+tdg a6;
+tdg a7;
+tdg a8;
+tdg a9;
+tdg a10;
+tdg a11;
+tdg a12;
+tdg a13;

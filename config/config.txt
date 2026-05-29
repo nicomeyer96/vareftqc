@@ -1,0 +1,15 @@
+# encoding gate set
+gates_1q_encoding: [U3]
+gate_2q_encoding: CU3
+
+# recovery gate set
+gates_1q_recovery: [U3]
+gate_2q_recovery: CU3
+
+# transversal operation gate set
+gate_1q_operation_transversal: U3
+gate_2q_operation_transversal: CU3
+
+# non-transversal operation gate set
+gate_1q_operation_non_transversal: U3
+gate_2q_operation_non_transversal: CU3

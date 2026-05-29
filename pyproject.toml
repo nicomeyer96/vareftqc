@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vareftqc"
+version = "0.1.0"
+description = "Variational Early Fault-Tolerant Quantum Error Correction"
+readme = "README.md"
+requires-python = ">=3.14"
+license = "Apache-2.0"
+keywords = []
+authors = [
+  { name = "Nico Meyer", email = "nico.meyer@iis.fraunhofer.de" },
+]
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.14"
+]
+dependencies = [
+    "configargparse==1.7.5",
+    "gast==0.7.0",
+    "openqasm3[parser]==1.0.1",
+    "pennylane==0.43.0",
+    "tensorboard==2.20.0",
+    "tensorboardx==2.6.5",
+    "torch==2.12.0",
+]
