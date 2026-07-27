@@ -29,7 +29,7 @@ from abc import abstractmethod
 from .helpers.data_structures import (OperationProperties, ParametersEncoding, CodeProperties,
                                            ParametersTransversalOperation, ParametersWeaklyTransversalOperation,
                                            ParametersNonTransversalOperation)
-from .components.state_preparation import SphericalTwoDesign, HaarRandomState
+from .components.state_preparation import ProjectiveTwoDesign, HaarRandomState
 from .components.operations import (TargetOperation, EncodedOperationStrictlyTransversal, EncodedOperationTransversal,
                                     EncodedOperationWeaklyTransversal)
 from .base_module import BaseModule
@@ -243,7 +243,7 @@ class OperationTargetModule(OperationBaseModule):
 
         # initialize state
         if 0 == number_states:  # use spherical 2-design
-            SphericalTwoDesign(wires=self.wires_data + self.wires_data_target)
+            ProjectiveTwoDesign(wires=self.wires_data + self.wires_data_target)
         else:
             HaarRandomState(wires=self.wires_data + self.wires_data_target, number=number_states, seed=seed_states)
         qml.Barrier(wires=self.wires, only_visual=False)
@@ -439,7 +439,7 @@ class OperationPredictionModule(OperationBaseModule):
 
         # initialize state
         if 0 == number_states:  # use spherical 2-design
-            SphericalTwoDesign(wires=self.wires_data + self.wires_data_target)
+            ProjectiveTwoDesign(wires=self.wires_data + self.wires_data_target)
         else:
             HaarRandomState(wires=self.wires_data + self.wires_data_target, number=number_states, seed=seed_states)
         qml.Barrier(wires=self.wires, only_visual=False)

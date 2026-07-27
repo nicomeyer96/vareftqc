@@ -1,2 +1,2 @@
-from .spherical_two_design import SphericalTwoDesign
+from .projective_two_design import ProjectiveTwoDesign
 from .haar_random_state import HaarRandomState
