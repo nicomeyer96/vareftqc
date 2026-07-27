@@ -21,7 +21,7 @@ reference baseline and as a noise-free/noisy target in training.
 import pennylane as qml
 from .helpers.data_structures import NoiseProperties
 from .base_module import BaseModule
-from .components.state_preparation import SphericalTwoDesign, HaarRandomState
+from .components.state_preparation import ProjectiveTwoDesign, HaarRandomState
 
 
 class PhysicalModule(BaseModule):
@@ -107,7 +107,7 @@ class PhysicalModule(BaseModule):
 
         # initialize state
         if 0 == number_states:  # use spherical 2-design
-            SphericalTwoDesign(wires=self.wires_data)
+            ProjectiveTwoDesign(wires=self.wires_data)
         else:
             HaarRandomState(wires=self.wires_data, number=number_states, seed=seed_states)
         qml.Barrier(wires=self.wires, only_visual=False)

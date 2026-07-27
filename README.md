@@ -20,8 +20,8 @@ see the acknowledgement section for details.
 > procedure, dubbed variational early fault-tolerant quantum computing (VarEFTQC), which tailors non-additive encodings 
 > to a given noise model and enforces desired logical gate sets, such as transversal IQP-type families or low-depth 
 > universal sets. An open-source software library provides the complete learning pipeline, including loss-function 
-> variants, ansatz families, and optimization routines. Together, these results position VarEFTQC as a practical tool 
-> for discovering hardware-adapted logical gadgets for early fault-tolerant quantum computing.
+> variants, ansatz families, and optimization routines. Together, these results position VarEFTQC as a proof-of-concept 
+> framework for discovering hardware-adapted logical gadgets for early fault-tolerant quantum computing.
 
 <img src="fig1.png" width="75%">
 
@@ -39,6 +39,7 @@ The core dependencies (see `pyproject.toml`) are:
 - `configargparse == 1.7.5`
 - `tensorboard == 2.20.0`
 - `tensorboardx == 2.6.5`
+- `matplotlib == 3.11.1`
 
 We recommend a **uv-based** setup:
 
@@ -139,6 +140,22 @@ There are different options to select an operation:
 * ``--operation_non_transversal``: Non-transversal ansatz (``--blocks_operation_non_transversal`` for number of two-qubit blocks in ansatz)
 
 Multiple of these logical operations can be combined within one training setup.
+
+</details>
+
+<details>
+  <summary><b>Pre-Trained Models and Plotting</b></summary><br/>
+We provide the pre-trained encodings and logical operations underlying Fig. 7 of the paper 
+"Learning Logical Operations for Arbitrary Quantum Error Correction Codes".
+
+The raw files can be found in `results`. 
+The plots can be re-created by running
+```bash
+python examples/fig_7a.py
+python examples/fig_7b.py
+python examples/fig_7c.py
+```
+and are placed in `examples/plots`.
 
 </details>
 

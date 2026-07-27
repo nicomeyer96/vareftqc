@@ -131,36 +131,39 @@ def fidelity_loss(prediction, groundtruth, display: str = None):
         print(f'{display} >>> AVG: {avg_lost_fidelity.detach():.7f} | MAX: {max_lost_fidelity.detach():.7f} [f-loss]')  # noqa
     return avg_lost_fidelity, max_lost_fidelity
 
-
+# 1-qubit case state ordering:
+# z0..1   = |0>, |1>
+# x0..1   = |+>, |->
+# y0..1   = |+i>, |-i>
 GROUNDTRUTH_STRUCTURE_1Q = [
-    ['d', 'b', 'f', 'f', 'f', 'f'],  # |0>
-    ['b', 'd', 'f', 'f', 'f', 'f'],  # |1>
-    ['f', 'f', 'd', 'b', 'f', 'f'],  # |+>
-    ['f', 'f', 'b', 'd', 'f', 'f'],  # |->
-    ['f', 'f', 'f', 'f', 'd', 'b'],  # |+i>
-    ['f', 'f', 'f', 'f', 'b', 'd']   # |-i>
+    [
+        'd' if row == col
+        else 'b' if row // 2 == col // 2
+        else 'f'
+        for col in range(6)
+    ]
+    for row in range(6)
 ]
+
 GROUNDTRUTH_1Q = {'d': 1.0, 'b': 0.0, 'f': 1/2}
 
+# 2-qubit case state ordering:
+# zz0..3   = |00>, |01>, |10>, |11>
+# xx0..3   = |++>, |+->, |-+>, |-->
+# yy0..3   = |+i,+i>, |+i,-i>, |-i,+i>, |-i,-i>
+# czxy0..3    = CZ(|x_a> ⊗ |y_b>)
+# czyx0..3    = CZ(|y_a> ⊗ |x_b>)
 GROUNDTRUTH_STRUCTURE_2Q = [
-    ['d', 'b', 'b', 'b', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'x', 'x', 'y', 'y'],  # |00>
-    ['b', 'd', 'b', 'b', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'y', 'y', 'x', 'x'],  # |01>
-    ['b', 'b', 'd', 'b', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'y', 'y', 'x', 'x'],  # |10>
-    ['b', 'b', 'b', 'd', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'x', 'x', 'y', 'y'],  # |11>
-    ['f', 'f', 'f', 'f', 'd', 'b', 'b', 'b', 'f', 'f', 'f', 'f', 'x', 'y', 'x', 'y'],  # |++>
-    ['f', 'f', 'f', 'f', 'b', 'd', 'b', 'b', 'f', 'f', 'f', 'f', 'y', 'x', 'y', 'x'],  # |+->
-    ['f', 'f', 'f', 'f', 'b', 'b', 'd', 'b', 'f', 'f', 'f', 'f', 'y', 'x', 'y', 'x'],  # |-+>
-    ['f', 'f', 'f', 'f', 'b', 'b', 'b', 'd', 'f', 'f', 'f', 'f', 'x', 'y', 'x', 'y'],  # |-->
-    ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'd', 'b', 'b', 'b', 'y', 'x', 'x', 'y'],  # |+i+i>
-    ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'b', 'd', 'b', 'b', 'x', 'y', 'y', 'x'],  # |+i-i>
-    ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'b', 'b', 'd', 'b', 'x', 'y', 'y', 'x'],  # |+i-i>
-    ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'b', 'b', 'b', 'd', 'y', 'x', 'x', 'y'],  # |-i-i>
-    ['x', 'y', 'y', 'x', 'x', 'y', 'y', 'x', 'y', 'x', 'x', 'y', 'd', 'b', 'b', 'b'],  # |00>+|11>
-    ['x', 'y', 'y', 'x', 'y', 'x', 'x', 'y', 'x', 'y', 'y', 'x', 'b', 'd', 'b', 'b'],  # |00>-|11>
-    ['y', 'x', 'x', 'y', 'x', 'y', 'y', 'x', 'x', 'y', 'y', 'x', 'b', 'b', 'd', 'b'],  # |01>+|10>
-    ['y', 'x', 'x', 'y', 'y', 'x', 'x', 'y', 'y', 'x', 'x', 'y', 'b', 'b', 'b', 'd']   # |01>-|10>
+    [
+        'd' if row == col
+        else 'b' if row // 4 == col // 4
+        else 'f'
+        for col in range(20)
+    ]
+    for row in range(20)
 ]
-GROUNDTRUTH_2Q = {'d': 1.0, 'b': 0.0, 'f': 1/4, 'x': 1/2, 'y': 0.0}
+
+GROUNDTRUTH_2Q = {'d': 1.0, 'b': 0.0, 'f': 1/4}
 
 GROUNDTRUTH = {1: (GROUNDTRUTH_STRUCTURE_1Q, GROUNDTRUTH_1Q), 2: (GROUNDTRUTH_STRUCTURE_2Q, GROUNDTRUTH_2Q)}
 
@@ -178,8 +181,6 @@ def operation_loss(prediction, target, order_operation: int, method: str = 'diag
     * ``"diag"``: only diagonal pairs (same input state),
     * ``"block"``: diagonal pairs plus selected orthogonal pairs (labels
       ``'b'``),
-    * ``"block_ext"`` (order 2 only): diagonal pairs plus selected
-      orthogonal and entangled pairs (labels ``'b'``, ``'x'``, ``'y'``),
     * ``"full"``: diagonal pairs plus all other labeled pairs.
 
     Args:
@@ -191,8 +192,7 @@ def operation_loss(prediction, target, order_operation: int, method: str = 'diag
         order_operation (int): Order of the logical operation (1 or 2). This
             determines which ground-truth structure is used.
         method (str): Loss variant to use. One of ``"diag"``, ``"block"``,
-            ``"block_ext"``, or ``"full"``. ``"block_ext"`` is only
-            supported for ``order_operation == 2``.
+            or ``"full"``.
         display (str | None): Optional prefix used when printing the loss
             values. If ``None``, no printing occurs.
 
@@ -224,10 +224,8 @@ def operation_loss(prediction, target, order_operation: int, method: str = 'diag
                          f'does not match!')
 
     # Evaluating anything but with the `diag` method is only supported for states from a two-design (see paper)
-    if 'block_ext' == method and 2 != order_operation:
-        raise ValueError(f'The method {method} is only supported for operation order 2.')
-    if method in ['block', 'block_ext', 'full']:
-        if (1 == order_operation and 6 != number_states) or (2 == order_operation and 16 != number_states):  # noqa
+    if method in ['block', 'full']:
+        if (1 == order_operation and 6 != number_states) or (2 == order_operation and 20 != number_states):  # noqa
             raise ValueError(f'The loss method {method} requires states from a two-design.')
         if order_operation > 2:
             raise ValueError(f'The loss method {method} allows an operation order of at most 2.')
@@ -259,12 +257,8 @@ def operation_loss(prediction, target, order_operation: int, method: str = 'diag
                 if 'b' == groundtruth_structure[row][col]:
                     fidelity = compute_fidelity(prediction[row], target[col])
                     fidelities_offdiagonal.append(groundtruth[groundtruth_structure[row][col]] - fidelity)
-            if 'block_ext' == method:  # elements marked with `b` and elements marked with `x` & `y` (entangled states)
-                if groundtruth_structure[row][col] in ['b', 'x', 'y']:
-                    fidelity = compute_fidelity(prediction[row], target[col])
-                    fidelities_offdiagonal.append(groundtruth[groundtruth_structure[row][col]] - fidelity)
             if 'full' == method:  # all state pairs (apart from `d` which are already appended to diagonal buffer)
-                if groundtruth_structure[row][col] in ['b', 'x', 'y', 'f']:
+                if groundtruth_structure[row][col] in ['b', 'f']:
                     fidelity = compute_fidelity(prediction[row], target[col])
                     fidelities_offdiagonal.append(groundtruth[groundtruth_structure[row][col]] - fidelity)
 

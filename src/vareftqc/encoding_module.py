@@ -22,7 +22,7 @@ import pennylane as qml
 import torch
 
 from .helpers.data_structures import CodeProperties, NoiseProperties, ParametersEncoding
-from .components.state_preparation import SphericalTwoDesign, HaarRandomState
+from .components.state_preparation import ProjectiveTwoDesign, HaarRandomState
 from .base_module import BaseModule
 
 
@@ -162,7 +162,7 @@ class EncodingModule(BaseModule):
 
         # initialize state
         if 0 == number_states:  # use spherical 2-design
-            SphericalTwoDesign(wires=self.code_properties.wires_data)
+            ProjectiveTwoDesign(wires=self.code_properties.wires_data)
         else:
             HaarRandomState(wires=self.code_properties.wires_data, number=number_states, seed=seed_states)
         qml.Barrier(wires=self.wires, only_visual=False)

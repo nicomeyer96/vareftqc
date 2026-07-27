@@ -145,9 +145,8 @@ def parse():
                         choices=['avg', 'max'], help='Whether to use average or maximum formulation of '
                                                      'distinguishability loss for training encoding.')
     parser.add_argument('--operation_loss', type=str, default='block',
-                        choices=['diag', 'block', 'block_ext', 'full'],
-                        help='Type of loss function to use for training of logical operation '
-                             '(`block_ext` only available for two-qubit operation).')
+                        choices=['diag', 'block', 'full'],
+                        help='Type of loss function to use for training of logical operation.')
     parser.add_argument('--operation_loss_regularize', type=float, default=1.0,
                         help='Weighting factor for operation loss (w.r.t. encoding loss).')
     parser.add_argument('--learning_rate', type=float, default=0.1,
