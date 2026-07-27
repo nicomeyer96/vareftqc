@@ -362,7 +362,7 @@ class LoggerBase:
             raise RuntimeError('Logging training deactivated.')
         if len(self._train) >= self.max_iter:
             raise RuntimeError(f'Reached {len(self._train)+1} iterations, but `max_iter` is set to {self.max_iter} '
-                               f'\(probably missing call to `finish_epoch`).')
+                               f'(probably missing call to `finish_epoch`).')
         loss = Loss(average=average, maximum=maximum, info=info)
         if self.tensorboard_writer is not None:
             # self.tensorboard_writer.add_scalar(f'{self.logger_prefix}/{'Train' if self.logger_suffix is None
