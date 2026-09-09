@@ -10,7 +10,7 @@ This repository contains the reference implementation for the framework introduc
 [![Static Badge](https://img.shields.io/badge/GitHub-nicomeyer96/varqec-green)
 ](https://github.com/nicomeyer96/varqec) Parts of this repository are also based on the framework previously introduced in 
 [Learning Encodings by Maximizing State Distinguishability: Variational Quantum Error Correction
-, N. Meyer et al., arXiv:2506.11552, 2025](https://arxiv.org/abs/2506.11552),
+, N. Meyer et al., Quantum Sci. Technol. 11, 045036, 2026](https://iopscience.iop.org/article/10.1088/2058-9565/ae98b1),
 see the acknowledgement section for details.
 
 > Logical operations are essential for quantum computation within quantum error-correcting codes. However, discovering 
