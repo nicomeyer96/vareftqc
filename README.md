@@ -288,7 +288,7 @@ If you use this implementation or results from the paper (VarEFTQC), please cite
 
 ```bibtex
 @article{meyer2026learninglogical,
-  title={Learning Logical Operations for Arbitrary Quantum Error Correction Codes},
+  title={Learning logical operations for arbitrary quantum error correction codes},
   author={Meyer, Nico and Mutschler, Christopher and Seu{\ss}, Dominik and Maier, Andreas and Scherer, Daniel D.},
   volume={114},
   pages={032424},
@@ -302,7 +302,7 @@ If you use the underlying approach for learning encodings (VarQEC), please also 
 
 ```bibtex
 @article{meyer2026learningencodings,
-  	title={Learning {E}ncodings by {M}aximizing {S}tate {D}istinguishability: {V}ariational {Q}uantum {E}rror {C}orrection},
+  	title={Learning encodings by maximizing state distinguishability: variational quantum error correction},
   	author={Meyer, Nico and Mutschler, Christopher and Maier, Andreas and Scherer, Daniel D},
     journal={Quantum Sci. Technol.},
   	volume={11},
