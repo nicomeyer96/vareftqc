@@ -1,10 +1,11 @@
 # Variational Early Fault-Tolerant Quantum Computing (VarEFTQC)
 
-[![Static Badge](https://img.shields.io/badge/arXiv-2605.28162-red)
+[![Static Badge](https://img.shields.io/badge/Phys._Rev._A-114_(032424)-green)
+](https://journals.aps.org/pra/abstract/10.1103/qj2x-3l6n)[![Static Badge](https://img.shields.io/badge/arXiv-2605.28162-red)
 ](https://doi.org/10.48550/arXiv.2605.28162) [![Static Badge](https://img.shields.io/badge/Zenodo-20280560-blue)](https://doi.org/10.5281/zenodo.20280560)
 
 This repository contains the reference implementation for the framework introduced in 
-[Learning Logical Operations for Arbitrary Quantum Error Correction Codes, N. Meyer et al., arXiv:2605.28162, 2026](https://arxiv.org/abs/2605.28162).
+[Learning Logical Operations for Arbitrary Quantum Error Correction Codes, N. Meyer et al., Phys. Rev. A 114, 032424, 2026](https://journals.aps.org/pra/abstract/10.1103/qj2x-3l6n).
 
 [![Static Badge](https://img.shields.io/badge/GitHub-nicomeyer96/varqec-green)
 ](https://github.com/nicomeyer96/varqec) Parts of this repository are also based on the framework previously introduced in 
@@ -286,22 +287,30 @@ for learning logical operations is integrated via `OperationTargetModule` and `O
 If you use this implementation or results from the paper (VarEFTQC), please cite:
 
 ```bibtex
-@article{meyer2026logical,
-  title   = {Learning Logical Operations for Arbitrary Quantum Error Correction Codes},
-  author  = {Meyer, Nico and Mutschler, Christopher and Seu{\ss}, Dominik and Maier, Andreas and Scherer, Daniel D.},
-  journal = {arXiv:2605.28162},
-  year    = {2026}
+@article{meyer2026learninglogical,
+  title={Learning Logical Operations for Arbitrary Quantum Error Correction Codes},
+  author={Meyer, Nico and Mutschler, Christopher and Seu{\ss}, Dominik and Maier, Andreas and Scherer, Daniel D.},
+  volume={114},
+  pages={032424},
+  year={2026},
+  publisher={APS},
+  doi={10.1103/qj2x-3l6n}
 }
 ```
 
 If you use the underlying approach for learning encodings (VarQEC), please also cite:
 
 ```bibtex
-@article{meyer2025learning,
-  title   = {Learning Encodings by Maximizing State Distinguishability: Variational Quantum Error Correction},
-  author  = {Meyer, Nico and Mutschler, Christopher and Maier, Andreas and Scherer, Daniel D.},
-  journal = {arXiv:2506.11552},
-  year    = {2025}
+@article{meyer2026learningencodings,
+  	title={Learning {E}ncodings by {M}aximizing {S}tate {D}istinguishability: {V}ariational {Q}uantum {E}rror {C}orrection},
+  	author={Meyer, Nico and Mutschler, Christopher and Maier, Andreas and Scherer, Daniel D},
+    journal={Quantum Sci. Technol.},
+  	volume={11},
+  	number={4},
+  	pages={045036},
+  	year={2026},
+  	publisher={IOP},
+    doi={10.1088/2058-9565/ae98b1}
 }
 ```
 
